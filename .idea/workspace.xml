@@ -3,7 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="97854505-b49b-46a0-b858-6f2a36f2cfa4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PaymentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PaymentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/orders/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/orders/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -140,6 +143,9 @@
       <path value="$PROJECT_DIR$/vendor/jxlwqq/quill" />
       <path value="$PROJECT_DIR$/vendor/yansongda/supports" />
       <path value="$PROJECT_DIR$/vendor/yansongda/pay" />
+      <path value="$PROJECT_DIR$/vendor/phpseclib/bcmath_compat" />
+      <path value="$PROJECT_DIR$/vendor/phpseclib/phpseclib" />
+      <path value="$PROJECT_DIR$/vendor/moontoast/math" />
     </include_path>
   </component>
   <component name="ProjectId" id="1hWm71k9dNjE2RLtJDDNy2lyKtI" />
@@ -179,7 +185,7 @@
       <option name="presentableId" value="Default" />
       <updated>1600135051835</updated>
       <workItem from="1600135053061" duration="33900000" />
-      <workItem from="1600332303554" duration="30368000" />
+      <workItem from="1600332303554" duration="32032000" />
     </task>
     <servers />
   </component>
