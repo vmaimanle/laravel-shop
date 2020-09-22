@@ -64,8 +64,21 @@
                                 </div>
                             </div>
                         @endif
+                    <!-- 分面搜索结果开始 -->
+                        <!-- 遍历聚合的商品属性 -->
+                        @foreach($properties as $property)
+                            <div class="row">
+                                <div class="col-3 filter-key">{{ $property['key'] }}：</div>
+                                <div class="col-9 filter-values">
+                                @foreach($property['values'] as $value)
+                                    <!-- 调用下面定义的 appendFilterToQuery 函数 -->
+                                        <a href="javascript: appendFilterToQuery('{{ $property['key'] }}', '{{ $value }}')">{{ $value }}</a>
+                                    @endforeach
+                                </div>
+                            </div>
+                    @endforeach
+                    <!-- 分面搜索结果结束 -->
                     </div>
-                    <!-- 展示子类目结束 -->
                     <div class="row products-list">
                         @foreach($products as $product)
                             <div class="col-3 product-item">
@@ -106,6 +119,50 @@
                 $('.search-form').submit();
             });
         })
+
+        // 定义一个函数，用于解析当前 Url 里的参数，并以 Key-Value 对象形式返回
+        function parseSearch() {
+            // 初始化一个空对象
+            var searches = {};
+            // location.search 会返回 Url 中 ? 以及后面的查询参数
+            // substr(1) 将 ? 去除，然后以符号 & 分割成数组，然后遍历这个数组
+            location.search.substr(1).split('&').forEach(function (str) {
+                // 将字符串以符号 = 分割成数组
+                var result = str.split('=');
+                // 将数组的第一个值解码之后作为 Key，第二个值解码后作为 Value 放到之前初始化的对象中
+                searches[decodeURIComponent(result[0])] = decodeURIComponent(result[1]);
+            });
+
+            return searches;
+        }
+
+        // 根据 Key-Value 对象构建查询参数
+        function buildSearch(searches) {
+            // 初始化字符串
+            var query = '?';
+            // 遍历 searches 对象
+            _.forEach(searches, function (value, key) {
+                query += encodeURIComponent(key) + '=' + encodeURIComponent(value) + '&';
+            });
+            // 去除最末尾的 & 符号
+            return query.substr(0, query.length - 1);
+        }
+
+        // 将新的 filter 追加到当前的 Url 中
+        function appendFilterToQuery(name, value) {
+            // 解析当前 Url 的查询参数
+            var searches = parseSearch();
+            // 如果已经有了 filters 查询
+            if (searches['filters']) {
+                // 则在已有的 filters 后追加
+                searches['filters'] += '|' + name + ':' + value;
+            } else {
+                // 否则初始化 filters
+                searches['filters'] = name + ':' + value;
+            }
+            // 重新构建查询参数，并触发浏览器跳转
+            location.search = buildSearch(searches);
+        }
     </script>
 @endsection
 
